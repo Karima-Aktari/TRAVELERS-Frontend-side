@@ -17,7 +17,7 @@ const Blogs = () => {
     console.log(spots);
     //UserExperience
     useEffect(() => {
-        fetch('http://localhost:5000/userExperience')
+        fetch('https://limitless-castle-21515.herokuapp.com/userExperience')
             .then(res => res.json())
             .then(data => setUserExperience(data));
     }, [])

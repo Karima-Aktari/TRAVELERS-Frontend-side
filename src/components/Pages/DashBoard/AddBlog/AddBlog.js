@@ -10,7 +10,7 @@ const AddBlog = () => {
 
     const onSubmit = data => {
         data.date = new Date().toLocaleDateString();
-        axios.post('http://localhost:5000/addBlog', data)
+        axios.post('https://limitless-castle-21515.herokuapp.com/addBlog', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added Successfully');
