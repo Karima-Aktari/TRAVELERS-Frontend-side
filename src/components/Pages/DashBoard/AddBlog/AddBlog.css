@@ -1,0 +1,21 @@
+.addBlog{
+    background-color: aquamarine;
+    color: rgb(223, 37, 37);
+}
+.addBlog form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+.addBlog form input, textarea{
+    width:35%;
+    margin: 10px 0px;
+    /* border: rgb(37, 35, 25); */
+    text-align: center;
+    border-radius: 25px;
+}
+.addBlog form input{
+    padding: 1%;
+}
