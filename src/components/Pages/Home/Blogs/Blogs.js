@@ -1,37 +1,35 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import ShowUserExperience from '../ShowUserExperience/ShowUserExperience';
 
 const Blogs = () => {
-    const spots = [
-        {
-            img: "https://i.ibb.co/2gwyWqj/blog-0.jpg",
-            title: "Swizerland",
-        },
-        {
-            img: "https://i.ibb.co/H22Jp8w/blog-1.jpg",
-            title: "Japan ",
-        },
-        {
-            img: "https://i.ibb.co/5nRnx2q/blog-2.jpg",
-            title: "Dubai",
-        },
-        {
-            img: "https://i.ibb.co/7SVM3ny/blog-3.jpg",
-            title: "France",
-        },
-        {
-            img: "https://i.ibb.co/2PL97Bd/blog-4.jpg",
-            title: "Turkey",
-        },
-    ];
+    const [spots, setSpots] = useState([]);
+    const [userExperience, setUserExperience] = useState([]);
 
+    //Show spots
+    useEffect(() => {
+        fetch('https://limitless-castle-21515.herokuapp.com/spots')
+            .then(res => res.json())
+            .then(data => setSpots(data));
+    }, [spots])
 
+    console.log(spots);
+    //UserExperience
+    useEffect(() => {
+        fetch('http://localhost:5000/userExperience')
+            .then(res => res.json())
+            .then(data => setUserExperience(data));
+    }, [])
+
+    console.log(userExperience);
 
     return (
         <div className="row mx-auto">
-            <div className="col-3 bg-dark h-100  py-4">
+            <div className="col-3 bg-dark h-100 py-4">
                 {
                     spots?.map((spot) => (
-                        <div className="row">
+                        <div className="row" key={spot._id}>
                             <div className="col-11 text-light">
                                 <img src={spot?.img} className="img-fluid rounded-3 " alt="" />
                                 <h1>{spot?.title}</h1>
@@ -43,6 +41,14 @@ const Blogs = () => {
             </div>
             <div className="col-9 bg-light h-100">
                 <h1>This is Blog.</h1>
+                <div className='row mx-auto'>
+                    {
+                        userExperience?.map(userExpo => <ShowUserExperience
+                            key={userExpo._id}
+                            userExpo={userExpo}>
+                        </ShowUserExperience>)
+                    }
+                </div>
             </div>
         </div>
     );

@@ -15,6 +15,7 @@ import AddBlog from './components/Pages/DashBoard/AddBlog/AddBlog';
 import DashBoard from './components/Pages/DashBoard/DashBoard/DashBoard';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MakeAdmin from './components/Pages/DashBoard/MakeAdmin/MakeAdmin';
+import UserExperience from './components/Pages/DashBoard/UserExperience/UserExperience';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
             <Route path="/dashBoard" element={<PrivateRoute><DashBoard /></PrivateRoute>} >
               <Route path={`/dashBoard/addBlog`} element={<AddBlog />} />
+              <Route path={`/dashBoard/userExperience`} element={<UserExperience />} />
               <Route path={`/dashBoard/makeAdmin`} element={<MakeAdmin />} />
             </Route>
 

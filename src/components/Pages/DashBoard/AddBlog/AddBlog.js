@@ -9,7 +9,8 @@ const AddBlog = () => {
     const { isLoading } = useAuth();
 
     const onSubmit = data => {
-        axios.post('', data)
+        data.date = new Date().toLocaleDateString();
+        axios.post('http://localhost:5000/addBlog', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added Successfully');
@@ -23,7 +24,12 @@ const AddBlog = () => {
                 <h1 className="text-secondary">Add Experience As a Blog</h1>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input {...register("img")} placeholder="Image url" />
+
                     <input {...register("name", { required: true, maxLength: 20 })} placeholder="Title" />
+
+                    <input {...register("category", { required: true, maxLength: 20 })} placeholder="Category" />
+
+                    <textarea {...register("info")} placeholder="Travelers-Info" />
 
                     <textarea {...register("description")} placeholder="Description" />
 

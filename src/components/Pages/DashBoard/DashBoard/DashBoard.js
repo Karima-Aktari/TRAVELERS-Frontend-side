@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink, Link, Outlet } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import Footer from '../../../Shared/Footer/Footer';
 import './DashBoard.css';
 
 const DashBoard = () => {
-    // const { admin } = useAuth();
+    // const { admin, logOut } = useAuth();
     return (
         <div>
             <div className="row mx-auto dashBoard-height">
@@ -28,10 +29,11 @@ const DashBoard = () => {
                             <li> Payment</li>
                         </Link> */}
 
-                            <Link to={`/dashBoard/reviews`}>
-                                <li className="py-2">Reviews</li>
+                            <Link to={`/dashBoard/userExperience`}>
+                                <li className="py-2">UserExperience</li>
                             </Link>
                         </div>
+                        <div> </div>
                     </nav>
 
                 </div>
@@ -42,7 +44,9 @@ const DashBoard = () => {
                     <Outlet></Outlet>
                 </div>
             </div>
-
+            <div>
+                <Footer></Footer>
+            </div>
         </div>
     );
 };
