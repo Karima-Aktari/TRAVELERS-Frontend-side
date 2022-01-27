@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import awards from '../../../images/awards.png';
 import "./Footer.css";
 
@@ -30,12 +29,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="fw-bolder quick-link">
-                    <h3>QuickLinks</h3>
-                    <Link to="/payment">Payment</Link><br />
-                    <Link to="/home">Shipment</Link><br />
-                    <Link to={`/dashBoard/myOrders`}>Where is my order</Link><br />
-                    <Link to={`/dashBoard/reviews`}>Review</Link><br />
-
+                    <h3>Location</h3>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1Ud5DRnqhKifdeHQ0wjENsGgLp_0&ehbc=2E312F" width="100%" height="300"></iframe>
                 </div>
             </div>
             <hr></hr>

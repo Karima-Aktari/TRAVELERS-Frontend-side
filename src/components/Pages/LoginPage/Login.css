@@ -1,0 +1,8 @@
+.loginBackground{
+    background-image: url('https://cdn.vox-cdn.com/thumbor/nykD_g_kBkiu1rlx8BH5OPssnVY=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13119225/1402978303_91757.jpg');
+    height:100vh;
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
