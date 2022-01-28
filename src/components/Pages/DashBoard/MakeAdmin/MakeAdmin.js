@@ -9,7 +9,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = (e) => {
         const user = { email };
-        fetch('https://limitless-castle-21515.herokuapp.com', {
+        fetch('https://limitless-castle-21515.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -24,7 +24,7 @@ const MakeAdmin = () => {
                 }
 
             })
-        e.preventDefault()
+        e.preventDefault();
     }
 
 

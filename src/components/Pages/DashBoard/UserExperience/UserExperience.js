@@ -7,7 +7,7 @@ const UserExperience = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user } = useAuth();
 
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         data.status = "pending";
         data.date = new Date().toLocaleDateString();
         axios.post('https://limitless-castle-21515.herokuapp.com/userExperience', data)

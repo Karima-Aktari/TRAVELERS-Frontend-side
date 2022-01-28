@@ -20,6 +20,7 @@ import ExperienceDetails from './components/Pages/Home/ExperienceDetails/Experie
 import ManageBlogs from './components/Pages/DashBoard/ManageBLogs/ManageBlogs';
 import AdminRoute from './components/Pages/DashBoard/AdminRoute/Adminaaroute';
 import AdminBlogDetails from './components/Pages/Home/AdminBlogDetails/AdminBlogDetails';
+import UpdateBlog from './components/Pages/DashBoard/UpdateBlog/UpdateBlog';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path={`/dashBoard/manageBlog`} element={<AdminRoute><ManageBlogs /></AdminRoute>} />
               <Route path={`/dashBoard/userExperience`} element={<UserExperience />} />
               <Route path={`/dashBoard/makeAdmin`} element={<AdminRoute><MakeAdmin /></AdminRoute>} />
+              <Route path={`/dashBoard/updateBlog/:userId`} element={<AdminRoute><UpdateBlog /></AdminRoute>} />
             </Route>
 
             <Route exact path="/" element={<Home />} />

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 const ManageBlogs = () => {
@@ -11,15 +12,15 @@ const ManageBlogs = () => {
 
     //UserExperience
     useEffect(() => {
-        fetch('http://localhost:5000/userExperience')
+        fetch('https://limitless-castle-21515.herokuapp.com/userExperience')
             .then(res => res.json())
             .then(data => setUserExperience(data));
     }, [])
     //Update orders
-    const handleUpdate = (id) => {
-        const proceed = window.confirm('Are you sure to shipped the order?');
+    const handleApproved = (id) => {
+        const proceed = window.confirm('Are you sure to Approve the Blog?');
         if (proceed) {
-            const url = `http://localhost:5000/userExperience/${id}`
+            const url = `https://limitless-castle-21515.herokuapp.com/userExperience/${id}`
             fetch(url, {
                 method: "PUT",
                 headers: { "content-type": "application.json" },
@@ -28,7 +29,8 @@ const ManageBlogs = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.modifiedCount) {
-                        alert('Approved completed')
+                        alert('Approved completed') &&
+                            setUserExperience(data)
                     }
 
                 })
@@ -38,7 +40,7 @@ const ManageBlogs = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are You Sure To DELETE?');
         if (proceed) {
-            const url = `http://localhost:5000/deleteExperience/${id}`
+            const url = `https://limitless-castle-21515.herokuapp.com/deleteExperience/${id}`
             fetch(url, {
                 method: "DELETE",
                 headers: { "content-type": "application.json" }
@@ -57,13 +59,13 @@ const ManageBlogs = () => {
 
     //Admin Blog
     useEffect(() => {
-        fetch('http://localhost:5000/addBlog')
+        fetch('https://limitless-castle-21515.herokuapp.com/addBlog')
             .then(res => res.json())
             .then(data => setBlogs(data));
     }, [])
 
     // Delete AdminBlog
-    const handleBlogDelete = id => {
+    const handleBlogDelete = (id) => {
         const proceed = window.confirm('Are You Sure To DELETE?');
         if (proceed) {
             const url = `https://limitless-castle-21515.herokuapp.com/deleteBlog/${id}`
@@ -104,7 +106,9 @@ const ManageBlogs = () => {
                                     <div className='col-12 col-md-6 col-lg-6 align-items-center'>
                                         <h5>{userExpo?.name}</h5>
                                         <h6>Date:-{userExpo?.date}</h6>
-                                        <button onClick={() => handleUpdate(userExpo._id)} className="btn bg-warning mx-2 px-2">{userExpo.status}</button>
+                                        <Link to={`/dashBoard/updateBlog/${userExpo._id}`}><button className="btn bg-warning mx-2 px-2">Update</button></Link>
+
+                                        <button onClick={() => handleApproved(userExpo._id)} className="btn bg-warning mx-2 px-2">{userExpo.status}</button>
                                         <button onClick={() => handleDelete(userExpo._id)} className="btn btn-danger px-4">Delete</button>
                                     </div>
 
@@ -127,6 +131,7 @@ const ManageBlogs = () => {
                                     <div className='col-12 col-md-6 col-lg-6 align-items-center'>
                                         <h5>{blog?.name}</h5>
                                         <h6>Date:-{blog?.date}</h6>
+                                        <button className="btn bg-warning mx-2 px-2">Update</button>
                                         <button onClick={() => handleBlogDelete(blog._id)} className="btn btn-danger px-4">Delete</button>
                                     </div>
 
