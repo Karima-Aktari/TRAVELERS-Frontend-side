@@ -12,7 +12,7 @@ const ExperienceDetails = () => {
     const { isLoading, user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userExperience/${userId}`)
+        fetch(`https://limitless-castle-21515.herokuapp.com/userExperience/${userId}`)
             .then(res => res.json())
             .then(data => setExperience(data));
     }, [])

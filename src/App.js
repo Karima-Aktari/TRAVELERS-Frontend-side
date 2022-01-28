@@ -19,6 +19,7 @@ import UserExperience from './components/Pages/DashBoard/UserExperience/UserExpe
 import ExperienceDetails from './components/Pages/Home/ExperienceDetails/ExperienceDetails';
 import ManageBlogs from './components/Pages/DashBoard/ManageBLogs/ManageBlogs';
 import AdminRoute from './components/Pages/DashBoard/AdminRoute/Adminaaroute';
+import AdminBlogDetails from './components/Pages/Home/AdminBlogDetails/AdminBlogDetails';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="/userExperience/:userId" element={<PrivateRoute><ExperienceDetails /></PrivateRoute>} />
+            <Route path="/addBlog/:blogId" element={<PrivateRoute><AdminBlogDetails /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

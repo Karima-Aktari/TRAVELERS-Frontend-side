@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
+import { Spinner } from 'react-bootstrap';
 import './AddBlog.css';
 
 const AddBlog = () => {
@@ -10,13 +11,17 @@ const AddBlog = () => {
 
     const onSubmit = data => {
         data.date = new Date().toLocaleDateString();
-        axios.post('http://localhost:5000/addBlog', data)
+        axios.post('https://limitless-castle-21515.herokuapp.com/addBlog', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added Successfully');
                     reset();
                 }
             })
+    }
+
+    if (isLoading) {
+        return <Spinner animation="border" variant="warning" />
     }
 
     return (

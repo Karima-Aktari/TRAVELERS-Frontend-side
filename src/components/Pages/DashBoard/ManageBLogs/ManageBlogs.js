@@ -66,7 +66,7 @@ const ManageBlogs = () => {
     const handleBlogDelete = id => {
         const proceed = window.confirm('Are You Sure To DELETE?');
         if (proceed) {
-            const url = `http://localhost:5000/deleteBlog/${id}`
+            const url = `https://limitless-castle-21515.herokuapp.com/deleteBlog/${id}`
             fetch(url, {
                 method: "DELETE",
                 headers: { "content-type": "application.json" }

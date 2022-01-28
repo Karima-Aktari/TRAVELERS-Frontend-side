@@ -18,14 +18,14 @@ const Blogs = () => {
 
     //UserExperience
     useEffect(() => {
-        fetch('http://localhost:5000/userExperience')
+        fetch('https://limitless-castle-21515.herokuapp.com/userExperience')
             .then(res => res.json())
             .then(data => setUserExperience(data));
     }, [])
 
     //Admin Blog
     useEffect(() => {
-        fetch('http://localhost:5000/addBlog')
+        fetch('https://limitless-castle-21515.herokuapp.com/addBlog')
             .then(res => res.json())
             .then(data => setBlogs(data));
     }, [])
