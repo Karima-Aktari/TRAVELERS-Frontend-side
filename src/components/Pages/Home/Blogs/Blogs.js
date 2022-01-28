@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import ShowAdminBlog from '../ShowAdminBlog/ShowAdminBlog';
 import ShowUserExperience from '../ShowUserExperience/ShowUserExperience';
 
 const Blogs = () => {
     const [spots, setSpots] = useState([]);
     const [userExperience, setUserExperience] = useState([]);
+    const [blogs, setBlogs] = useState([]);
 
     //Show spots
     useEffect(() => {
@@ -14,15 +16,20 @@ const Blogs = () => {
             .then(data => setSpots(data));
     }, [spots])
 
-    console.log(spots);
     //UserExperience
     useEffect(() => {
-        fetch('https://limitless-castle-21515.herokuapp.com/userExperience')
+        fetch('http://localhost:5000/userExperience')
             .then(res => res.json())
             .then(data => setUserExperience(data));
     }, [])
 
-    console.log(userExperience);
+    //Admin Blog
+    useEffect(() => {
+        fetch('http://localhost:5000/addBlog')
+            .then(res => res.json())
+            .then(data => setBlogs(data));
+    }, [])
+    console.log(blogs);
 
     return (
         <div className="row mx-auto">
@@ -40,14 +47,28 @@ const Blogs = () => {
 
             </div>
             <div className="col-9 bg-light h-100">
-                <h1>This is Blog.</h1>
-                <div className='row mx-auto'>
-                    {
-                        userExperience?.map(userExpo => <ShowUserExperience
-                            key={userExpo._id}
-                            userExpo={userExpo}>
-                        </ShowUserExperience>)
-                    }
+                <div>
+                    <h1>Travelers Experience.</h1>
+                    <div className='row mx-auto'>
+                        {
+                            userExperience?.map(userExpo => <ShowUserExperience
+                                key={userExpo._id}
+                                userExpo={userExpo}>
+                            </ShowUserExperience>)
+                        }
+                    </div>
+                </div>
+                <hr></hr>
+                <div className='p-4'>
+                    <h1>Admin Blog</h1>
+                    <div className='row mx-auto'>
+                        {
+                            blogs?.map(blog => <ShowAdminBlog
+                                key={blog._id}
+                                blog={blog}>
+                            </ShowAdminBlog>)
+                        }
+                    </div>
                 </div>
             </div>
         </div>

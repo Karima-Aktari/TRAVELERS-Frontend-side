@@ -16,6 +16,7 @@ import DashBoard from './components/Pages/DashBoard/DashBoard/DashBoard';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MakeAdmin from './components/Pages/DashBoard/MakeAdmin/MakeAdmin';
 import UserExperience from './components/Pages/DashBoard/UserExperience/UserExperience';
+import ExperienceDetails from './components/Pages/Home/ExperienceDetails/ExperienceDetails';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="/userExperience/:userId" element={<ExperienceDetails />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

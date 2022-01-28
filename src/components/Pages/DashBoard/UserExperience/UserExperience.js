@@ -8,8 +8,9 @@ const UserExperience = () => {
     const { user } = useAuth();
 
     const onSubmit = data => {
+        data.status = "pending";
         data.date = new Date().toLocaleDateString();
-        axios.post('https://limitless-castle-21515.herokuapp.com', data)
+        axios.post('http://localhost:5000/userExperience', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added Successfully');
@@ -31,8 +32,9 @@ const UserExperience = () => {
 
                 <input className="w-50 text-center rounded-3 py-2 border-0" placeholder="Photo" {...register("img")} /><br />
 
-
                 <input className="w-50 text-center rounded-3 my-3 py-2 border-0" placeholder="Rating" type="number"{...register("rating", { required: true, min: "0", max: "5" })} /><br />
+
+                <input className="w-50 text-center rounded-3 py-2 border-0" placeholder="Location" type="text"{...register("location")} /><br />
 
                 <input className="w-50 text-center rounded-3 my-3 py-2 border-0" placeholder="Expense" type="number"{...register("expense")} /><br />
 

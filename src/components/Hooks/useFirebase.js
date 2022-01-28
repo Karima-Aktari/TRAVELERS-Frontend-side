@@ -114,7 +114,7 @@ const useFirebase = () => {
     //Make user and save in database
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://limitless-castle-21515.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

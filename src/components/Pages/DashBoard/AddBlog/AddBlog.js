@@ -10,14 +10,16 @@ const AddBlog = () => {
 
     const onSubmit = data => {
         data.date = new Date().toLocaleDateString();
-        axios.post('https://limitless-castle-21515.herokuapp.com/addBlog', data)
+        axios.post('http://localhost:5000/addBlog', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Added Successfully');
                     reset();
                 }
             })
+        console.log(data)
     }
+
     return (
         <div className="">
             <div className="addBlog">
@@ -30,6 +32,8 @@ const AddBlog = () => {
                     <input {...register("category", { required: true, maxLength: 20 })} placeholder="Category" />
 
                     <textarea {...register("info")} placeholder="Travelers-Info" />
+                    {/* <br /> */}
+                    <textarea {...register("address")} placeholder="Location-Address" />
 
                     <textarea {...register("description")} placeholder="Description" />
 
