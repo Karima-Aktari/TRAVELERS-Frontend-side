@@ -4,6 +4,7 @@ import { Spinner } from 'react-bootstrap';
 import useAuth from '../../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
+import Navigation from '../../../Shared/Navigation/Navigation';
 
 const ExperienceDetails = () => {
     const { userId } = useParams();
@@ -15,27 +16,29 @@ const ExperienceDetails = () => {
             .then(res => res.json())
             .then(data => setExperience(data));
     }, [])
-    console.log(experience)
+
     if (isLoading) {
         return <Spinner animation="border" variant="warning" />
     }
     return (
         <div>
-            <h1>Details {userId} </h1>
-            <div className="p-4 text-info">
+            <Navigation></Navigation>
+            <h1>User Experience in Details</h1>
+            <div className="p-4">
                 <img src={experience.img} className="img-fluid w-75 rounded-3" alt=""></img>
                 <h2>{experience.name}</h2>
                 <h4>{experience.email}</h4>
                 <h4>{experience.location}</h4>
                 <p className="fw-bolder px-4 ">{experience.description}</p>
-                <h4>$ {experience.expence}</h4>
+                <h4>$ {experience.expense}</h4>
                 <h4>{experience.date}</h4>
                 <p className=" mb-1 fs-5">
                     <Rating initialRating={experience.rating} emptySymbol="far fa-star text-warning"
                         fullSymbol="fas fa-star text-warning" readonly>
                     </Rating>
                 </p>
-                {/* <Link to={ }><button className="btn btn-info">Details</button></Link> */}
+                <Link to={'/dashBoard'}><button className="btn btn-info">Share Your Experience</button></Link>
+
             </div>
         </div>
     );

@@ -17,8 +17,6 @@ const Navigation = () => {
                         <Nav.Link as={Link} to="/home">Home</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
-                        {/* <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                        <Nav.Link as={Link} to="/login">Dashboard</Nav.Link> */}
 
                         {
                             user.email ?

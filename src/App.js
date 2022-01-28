@@ -17,6 +17,8 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import MakeAdmin from './components/Pages/DashBoard/MakeAdmin/MakeAdmin';
 import UserExperience from './components/Pages/DashBoard/UserExperience/UserExperience';
 import ExperienceDetails from './components/Pages/Home/ExperienceDetails/ExperienceDetails';
+import ManageBlogs from './components/Pages/DashBoard/ManageBLogs/ManageBlogs';
+import AdminRoute from './components/Pages/DashBoard/AdminRoute/Adminaaroute';
 
 function App() {
   return (
@@ -26,9 +28,10 @@ function App() {
           <Routes>
 
             <Route path="/dashBoard" element={<PrivateRoute><DashBoard /></PrivateRoute>} >
-              <Route path={`/dashBoard/addBlog`} element={<AddBlog />} />
+              <Route path={`/dashBoard/addBlog`} element={<AdminRoute><AddBlog /></AdminRoute>} />
+              <Route path={`/dashBoard/manageBlog`} element={<AdminRoute><ManageBlogs /></AdminRoute>} />
               <Route path={`/dashBoard/userExperience`} element={<UserExperience />} />
-              <Route path={`/dashBoard/makeAdmin`} element={<MakeAdmin />} />
+              <Route path={`/dashBoard/makeAdmin`} element={<AdminRoute><MakeAdmin /></AdminRoute>} />
             </Route>
 
             <Route exact path="/" element={<Home />} />
@@ -36,7 +39,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="/userExperience/:userId" element={<ExperienceDetails />} />
+            <Route path="/userExperience/:userId" element={<PrivateRoute><ExperienceDetails /></PrivateRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

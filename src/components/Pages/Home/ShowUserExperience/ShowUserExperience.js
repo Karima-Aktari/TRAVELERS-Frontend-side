@@ -5,9 +5,9 @@ import Rating from 'react-rating';
 const ShowUserExperience = ({ userExpo }) => {
 
     const { _id, img, name, rating } = userExpo;
-    console.log(userExpo)
+
     return (
-        <div className='row'>
+        <div className='row py-3'>
             <div className='col-md-6'>
                 <img src={img} className="w-75 rounded-3" alt="" />
             </div>

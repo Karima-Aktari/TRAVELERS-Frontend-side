@@ -17,7 +17,6 @@ const AddBlog = () => {
                     reset();
                 }
             })
-        console.log(data)
     }
 
     return (

@@ -17,7 +17,6 @@ const UserExperience = () => {
                     reset();
                 }
             })
-        console.log(data);
     }
 
 

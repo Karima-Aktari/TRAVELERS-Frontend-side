@@ -104,11 +104,11 @@ const useFirebase = () => {
     }, [auth])
 
     // // //set Admin
-    // useEffect(() => {
-    //     fetch(`https://limitless-castle-21515.herokuapp.com/users/${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data?.admin))
-    // }, [user.email])
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data?.admin))
+    }, [user.email])
 
 
     //Make user and save in database
